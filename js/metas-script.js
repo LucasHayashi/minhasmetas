@@ -3,7 +3,7 @@ function dateIsValid(date) {
 }
 
 $(document).ready(function () {
-    $('#criar-nova-meta').on('submit', function (event) {
+    $('#criar-nova-meta, #atualiizar-meta').on('submit', function (event) {
         $('.brl').maskMoney('destroy');
 
         $('.brl').each(function () {
@@ -14,19 +14,19 @@ $(document).ready(function () {
         let valor_total = Number($('#valor_total').val());
         let valor_atual = Number($('#valor_atual').val());
         let data_limite = $('#data_limite').datepicker('getDate');
-        let alertDanger = $('.alert-danger');
+        let notifyMessage = "";
 
         if ((valor_atual > valor_total) ||
             (valor_atual === valor_total)) {
-            alertDanger.text('Não é possível cadastrar uma meta concluída');
+            notifyMessage = 'Não é possível cadastrar uma meta concluída';
         } else if (!dateIsValid(data_limite)) {
-            alertDanger.text('Insira uma data válida');
+            notifyMessage = 'Insira uma data válida';
         } else {
             return;
         }
 
-        alertDanger.removeClass('d-none').addClass('show');
+        notify(notifyMessage, 'error');
 
         event.preventDefault();
     });
-})
+});

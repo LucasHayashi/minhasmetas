@@ -8,7 +8,7 @@ class Auth
             session_start();
         }
     }
-    
+
     public function isLogged()
     {
         return isset($_SESSION['id_usuario']);
@@ -26,7 +26,8 @@ class Auth
         unset($_SESSION['nm_usuario']);
     }
 
-    public function getUserName() {
+    public function getUserName()
+    {
         return $_SESSION['nm_usuario'];
     }
 }

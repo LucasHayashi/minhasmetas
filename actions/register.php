@@ -27,15 +27,15 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
         $smtm = $con->prepare($sql);
 
         if ($smtm->execute($data)) {
-            $redirectUrl = "login.php?message=Usuário criado com sucesso!&class=success";
+            $redirectUrl = "../login.php?message=Usuário criado com sucesso!&class=success";
         } else {
-            $redirectUrl = "register.php?message=Ops! Ocorreu um erro ao criar seu usuário, tente novamente!&class=danger";
+            $redirectUrl = "../register.php?message=Ops! Ocorreu um erro ao criar seu usuário, tente novamente!&class=error";
         }
     } else {
-        $redirectUrl = "register.php?message=Usuário já existente!&class=danger";
+        $redirectUrl = "../register.php?message=Usuário já existente!&class=error";
     }
 } else {
-    $redirectUrl = "register.php?message=Informe todos os campos obrigatórios!&class=danger";
+    $redirectUrl = "../register.php?message=Informe todos os campos obrigatórios!&class=error";
 }
 
 header('Location: ' . $redirectUrl);

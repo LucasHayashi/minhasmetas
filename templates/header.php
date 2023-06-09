@@ -48,12 +48,14 @@ $authInfo = new Auth();
                             <a class="nav-link active" aria-current="page" href="index.php">Início</a>
                         </li>
                         <?php if ($authInfo->isLogged()) : ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Ferramentas</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="nova-meta.php">Nova Meta</a></li>
-                            </ul>
-                        </li>
+                            <a class="nav-link" aria-current="page" href="dashboard.php">Dashboard</a>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Ferramentas</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="nova-meta.php">Nova Meta</a></li>
+                                </ul>
+                            </li>
                         <?php endif; ?>
                     </ul>
                     <!-- Escola do tema -->

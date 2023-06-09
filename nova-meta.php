@@ -8,7 +8,6 @@ include_once("templates/header.php");
     <div class="container">
         <h1 class="mt-2">Criar nova meta</h1>
         <hr>
-        <div class="alert alert-danger d-none" role="alert"></div>
         <form action="actions/salvar-meta.php" method="POST" id="criar-nova-meta" class="row g-3">
             <div class="col-md-12">
                 <label for="titulo" class="form-label">Título</label>
@@ -40,6 +39,6 @@ include_once("templates/header.php");
 </main>
 
 <?php
-$extraScripts = ["js/nova-meta.js"];
+$extraScripts = ["js/metas-script.js"];
 include_once("templates/footer.php");
 ?>

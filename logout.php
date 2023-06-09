@@ -8,4 +8,3 @@ if ($auth->isLogged()) {
 }
 
 header("Location: login.php");
-?>
