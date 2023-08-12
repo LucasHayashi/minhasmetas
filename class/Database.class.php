@@ -9,7 +9,7 @@ class Database
     {
         $driver = "mysql";
         $host = "localhost";
-        $dbname = "test";
+        $dbname = "mysql";
         $username = "root";
 
         try {

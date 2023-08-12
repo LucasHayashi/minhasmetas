@@ -43,12 +43,11 @@ $authInfo = new Auth();
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.php">Início</a>
-                        </li>
+                    <ul class="navbar-nav main me-auto mb-2 mb-lg-0">
                         <?php if ($authInfo->isLogged()) : ?>
-                            <a class="nav-link" aria-current="page" href="dashboard.php">Dashboard</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="dashboard.php">Dashboard</a>
+                            </li>
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Ferramentas</a>

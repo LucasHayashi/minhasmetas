@@ -7,7 +7,14 @@ include_once("funcoes.php");
 
 <main class="flex-shrink-0">
     <div class="container">
-        <h1 class="mt-2">Todas</h1>
+        <div class="row">
+            <h1>Minhas metas</h1>
+        </div>
+        <div class="d-flex flex-wrap justify-content-between align-items-center">
+            <p class="lead">Acompanhe e atualiza o progresso das suas metas</p>
+            <a href="nova-meta.php" class="btn btn-primary">Adicionar meta <i class="bi bi-plus-lg"></i></a>
+        </div>
+
         <hr>
         <!-- DataTable -->
         <table id="tbl-minhas-metas" class="display nowrap" style="width:100%">

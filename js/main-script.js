@@ -60,7 +60,25 @@ function notify(message, notifyClassName) {
 	});
 }
 
+function activeCurrentMenu() {
+	const currentPageLink = window.location.href;
+	const navLinks = $(".navbar-nav.main a");
+	navLinks.removeClass('active');
+
+	navLinks.each(function (k, v) {
+		let currentNav = $(v);
+		let currItemLink = currentNav.prop('href');
+		if (currItemLink === currentPageLink) {
+			currentNav.addClass('active');
+			if (currentNav.closest('.nav-item').hasClass('dropdown')) {
+				currentNav.closest('.nav-item').find('.nav-link').addClass('active');
+			}
+		}
+	})
+}
+
 $(document).ready(function () {
+	activeCurrentMenu();
 	$(".current-theme").html(currentHtmlDisplayTheme(getActiveTheme()));
 
 	setDropdownDisplayTheme();

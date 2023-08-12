@@ -1,12 +1,16 @@
 <?php
 session_start();
-$title = "Entrar";
-include_once("templates/header.php");
-include_once("funcoes.php");
+require_once("class/Auth.class.php");
+$authInfo = new Auth();
 
 if ($authInfo->isLogged()) {
     header('Location: dashboard.php');
 }
+
+$title = "Entrar";
+include_once("templates/header.php");
+include_once("funcoes.php");
+
 ?>
 <main class="m-auto">
     <form action="actions/login.php" method="post">
