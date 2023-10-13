@@ -1,7 +1,6 @@
 <?php
-require_once("../class/Database.class.php");
+include_once("../includes/conexao.php");
 
-$con = Database::getConexao();
 $return = array();
 $redirectUrl = "";
 
@@ -24,9 +23,9 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
         );
 
         $sql = "insert into users (name, email, password) values (:name, :email, :password)";
-        $smtm = $con->prepare($sql);
+        $stmt = $con->prepare($sql);
 
-        if ($smtm->execute($data)) {
+        if ($stmt->execute($data)) {
             $redirectUrl = "../login.php?message=Usuário criado com sucesso!&class=success";
         } else {
             $redirectUrl = "../register.php?message=Ops! Ocorreu um erro ao criar seu usuário, tente novamente!&class=error";

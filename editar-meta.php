@@ -7,10 +7,9 @@ if (isset($_GET['id_meta']) == false) {
 
 require_once("guards/dashboard-guard.php");
 include_once("templates/header.php");
-require_once("class/Database.class.php");
+include_once("includes/conexao.php");
 
 $id_meta = $_GET['id_meta'];
-$con = Database::getConexao();
 $redirectUrl = "";
 
 $sql = "select titulo, 

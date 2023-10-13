@@ -1,7 +1,6 @@
 <?php
 session_start();
-require_once("class/Database.class.php");
-$con = Database::getConexao();
+require_once("includes/conexao.php");
 
 $acao = $_POST['acao'];
 

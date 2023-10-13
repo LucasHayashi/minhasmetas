@@ -1,8 +1,7 @@
 <?php
 session_start();
-require_once("../class/Database.class.php");
+include_once("../includes/conexao.php");
 
-$con = Database::getConexao();
 $url = "";
 $titulo = $_POST['titulo'];
 $valor_atual = $_POST['valor_atual'];

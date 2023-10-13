@@ -1,8 +1,7 @@
 <?php
 session_start();
-require_once("../class/Database.class.php");
+include_once("../includes/conexao.php");
 
-$con = Database::getConexao();
 $url = "";
 $id_meta = $_POST['id_meta'];
 $titulo = $_POST['titulo'];

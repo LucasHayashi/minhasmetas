@@ -1,8 +1,7 @@
 <?php
-require_once("../class/Database.class.php");
+include_once("../includes/conexao.php");
 require_once("../class/Auth.class.php");
 
-$con = Database::getConexao();
 $redirectUrl = "";
 
 if (isset($_POST['email']) && isset($_POST['password'])) {

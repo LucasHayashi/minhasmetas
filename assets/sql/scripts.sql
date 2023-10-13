@@ -7,7 +7,7 @@ CREATE TABLE users (
     updated_at DATE
 )
 
-CREATE TABLE METAS(
+CREATE TABLE metas(
 	id_meta INT PRIMARY KEY AUTO_INCREMENT,
     id_usuario INT,
     titulo varchar(500),
