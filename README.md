@@ -1,10 +1,18 @@
 # Minhas Metas
-## Site para registrar e acompanhar metas pessoais em dinheiro
-### Introdução
-O objetivo do projeto é disponibilizar uma forma prática de registrar e acompanhar o andamento das metas pessoais em dinheiro.
+## Registrar e acompanhar metas pessoais
 
-### Features
-- Adicionar, editar e excluir metas
-- Login único para cada usuário
-- Tema claro, escuro e auto
-- Filtro das metas com o DataTable
+Minhas Metas é um projeto que permite adicionar, editar e excluir suas metas pessoais.
+
+O objetivo do projeto foi utilizar o jQuery juntamente com algumas de suas bibliotecas mais utilizadas. 
+
+## Tecnologias
+- [PHP 8](https://www.php.net/)
+
+## Bibliotecas
+- [jQuery](https://jquery.com/)
+- [DataTables](https://datatables.net/)
+- [Boostrap](https://getbootstrap.com/)
+- [jQuery Mask Plugin](https://igorescobar.github.io/jQuery-Mask-Plugin/)
+- [Jquery-maskMoney](https://plentz.github.io/jquery-maskmoney/)
+- [Notify.js](https://notifyjs.jpillora.com/)
+- [bootstrap-datepicker](https://bootstrap-datepicker.readthedocs.io/en/latest/)

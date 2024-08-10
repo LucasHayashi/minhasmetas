@@ -5,7 +5,7 @@ CREATE TABLE users (
     password VARCHAR(255),
     created_at DATE DEFAULT NOW(),
     updated_at DATE
-)
+);
 
 CREATE TABLE metas(
 	id_meta INT PRIMARY KEY AUTO_INCREMENT,

@@ -6,12 +6,12 @@ include_once("funcoes.php");
 ?>
 
 <main class="flex-shrink-0">
-    <div class="container">
+    <div class="container py-2">
         <div class="row">
             <h1>Minhas metas</h1>
         </div>
         <div class="d-flex flex-wrap justify-content-between align-items-center">
-            <p class="lead">Acompanhe e atualiza o progresso das suas metas</p>
+            <p class="lead">Acompanhe e atualize o progresso das suas metas pessoais</p>
             <a href="nova-meta.php" class="btn btn-primary">Adicionar meta <i class="bi bi-plus-lg"></i></a>
         </div>
 

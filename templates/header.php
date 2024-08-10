@@ -14,6 +14,11 @@ $authInfo = new Auth();
     <link rel="stylesheet" href="includes/bootstrap-5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="includes/DataTables/datatables.min.css" />
     <link rel="stylesheet" href="includes/bootstrap-datepicker-1.10.0/css/bootstrap-datepicker.min.css">
+    <style>
+        .dtr-details {
+            width: 100%!important;
+        }
+    </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="includes/jquery-3.7.0/jquery-3.7.0.min.js"></script>
     <script src="includes/bootstrap-5.3.0/js/bootstrap.bundle.min.js"></script>
@@ -47,13 +52,6 @@ $authInfo = new Auth();
                         <?php if ($authInfo->isLogged()) : ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="dashboard.php">Dashboard</a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Ferramentas</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="nova-meta.php">Nova Meta</a></li>
-                                </ul>
                             </li>
                         <?php endif; ?>
                     </ul>

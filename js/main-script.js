@@ -105,7 +105,7 @@ $(document).ready(function () {
 		decimal: ",",
 		affixesStay: false,
 		reverse: true,
-	});
+	}).maskMoney('mask');
 
 	$("#tbl-minhas-metas").DataTable({
 		language: {
@@ -154,6 +154,21 @@ $(document).ready(function () {
 				width: "10%",
 			},
 			{
+				data: "data_cadastro",
+				render: function (data, type, row) {
+					if (data) {
+						var date = new Date(data);
+						var day = ("0" + date.getDate()).slice(-2);
+						var month = ("0" + (date.getMonth() + 1)).slice(-2);
+						var year = date.getFullYear();
+						return day + '/' + month + '/' + year;
+					}
+					return data;
+				},
+				title: "Dt. Cadastro",
+				width: "20%",
+			},
+			{
 				data: function (data, type, row) {
 					let valorAtual = data.valor_inicial;
 					let valorTotal = data.valor_total;
@@ -171,7 +186,7 @@ $(document).ready(function () {
 					</div>
 				  </div>`;
 				},
-				title: "%",
+				title: "Progresso",
 				width: "20%",
 			},
 			{

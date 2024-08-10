@@ -4,21 +4,13 @@ function dateIsValid(date) {
 
 $(document).ready(function () {
     $('#criar-nova-meta, #atualiizar-meta').on('submit', function (event) {
-        $('.brl').maskMoney('destroy');
-
-        $('.brl').each(function () {
-            var unmaskedValue = $(this).maskMoney('unmasked')[0];
-            $(this).val(unmaskedValue);
-        });
-
-        let valor_total = Number($('#valor_total').val());
-        let valor_atual = Number($('#valor_atual').val());
-        let data_limite = $('#data_limite').datepicker('getDate');
         let notifyMessage = "";
-
-        if ((valor_atual > valor_total) ||
-            (valor_atual === valor_total)) {
-            notifyMessage = 'Não é possível cadastrar uma meta concluída';
+        let valor_total = $('#valor_total').maskMoney('unmasked').get(0)
+        let valor_atual = $('#valor_atual').maskMoney('unmasked').get(0)
+        let data_limite = $('#data_limite').datepicker('getDate');
+        console.log(valor_atual, valor_total)
+        if ( (valor_atual > valor_total) ) {
+            notifyMessage = 'O valor atual não pode ser maior que o valor da sua meta';
         } else if (!dateIsValid(data_limite)) {
             notifyMessage = 'Insira uma data válida';
         } else {
