@@ -25,7 +25,7 @@ include_once("funcoes.php");
             <label for="password">Senha</label>
         </div>
         <button class="btn btn-primary w-100 py-2 mb-1" type="submit">Entrar</button>
-        <p><strong>Não tem uma conta? <a href="register.php" target="_blank">Crie uma</a>.</strong></p>
+        <p><strong>Não tem uma conta? <a href="register.php">Crie uma</a>.</strong></p>
     </form>
 </main>
 <?php
