@@ -4,5 +4,8 @@ require_once("class/Auth.class.php");
 $authInfo = new Auth();
 
 if (!$authInfo->isLogged()) {
-    header('Location: login.php?message=Sem permissão para acessar esta página!&class=error');
+    $_SESSION['message'] = "Sem permissão para acessar esta página!";
+    $_SESSION['class'] = "error";
+    header('Location: login.php');
+    exit();
 }

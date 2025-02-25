@@ -2,7 +2,6 @@
 $title = "Início";
 require_once("guards/dashboard-guard.php");
 include_once("templates/header.php");
-include_once("funcoes.php");
 ?>
 
 <main class="flex-shrink-0">
@@ -16,10 +15,10 @@ include_once("funcoes.php");
         </div>
 
         <hr>
-        <!-- DataTable -->
-        <table id="tbl-minhas-metas" class="display nowrap" style="width:100%">
-            <!-- Conteúdo da tabela -->
-        </table>
+
+        <div id="metas-container" class="row">
+            <!-- Cards serão inseridos aqui dinamicamente -->
+        </div>
 
         <!-- Modal Excluir Meta -->
         <div class="modal fade" id="modalExcluirMeta">
@@ -44,7 +43,4 @@ include_once("funcoes.php");
 
 <?php
 include_once("templates/footer.php");
-
-printQueryParamAlert();
-
 ?>

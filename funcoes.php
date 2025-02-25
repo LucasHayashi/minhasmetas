@@ -1,14 +1,17 @@
 <?php
-
-function printQueryParamAlert()
+function printSessionAlert()
 {
-    $alertMessage = "";
-    $notifyClass = "";
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
-    if (isset($_GET['message'])) {
-        $alertMessage = $_GET['message'];
-        $notifyClass = $_GET['class'];
+    if (isset($_SESSION['message'])) {
+        $alertMessage = $_SESSION['message'];
+        $notifyClass = $_SESSION['class'];
 
-        echo "<script>notify('$alertMessage', '$notifyClass');</script>";
+        unset($_SESSION['message']);
+        unset($_SESSION['class']);
+
+        echo "<script>notify('" . htmlspecialchars($alertMessage) . "', '$notifyClass');</script>";
     }
 }

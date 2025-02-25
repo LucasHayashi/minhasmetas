@@ -1,8 +1,7 @@
 <?php
 include_once("../includes/conexao.php");
 
-$return = array();
-$redirectUrl = "";
+session_start();
 
 if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])) {
     $name = $_POST['name'];
@@ -10,7 +9,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
     $password = $_POST['password'];
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-    $sql = "select * from users where email = :email";
+    $sql = "SELECT * FROM users WHERE email = :email";
     $stmt = $con->prepare($sql);
     $stmt->bindParam(":email", $email);
     $stmt->execute();
@@ -22,19 +21,28 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
             "password" => $hashedPassword
         );
 
-        $sql = "insert into users (name, email, password) values (:name, :email, :password)";
+        $sql = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
         $stmt = $con->prepare($sql);
 
         if ($stmt->execute($data)) {
-            $redirectUrl = "../login.php?message=Usuário criado com sucesso!&class=success";
+            $_SESSION['message'] = "Usuário criado com sucesso!";
+            $_SESSION['class'] = "success";
+            $redirectUrl = "../login.php";
         } else {
-            $redirectUrl = "../register.php?message=Ops! Ocorreu um erro ao criar seu usuário, tente novamente!&class=error";
+            $_SESSION['message'] = "Ops! Ocorreu um erro ao criar seu usuário, tente novamente!";
+            $_SESSION['class'] = "error";
+            $redirectUrl = "../register.php";
         }
     } else {
-        $redirectUrl = "../register.php?message=Usuário já existente!&class=error";
+        $_SESSION['message'] = "Usuário já existente!";
+        $_SESSION['class'] = "error";
+        $redirectUrl = "../register.php";
     }
 } else {
-    $redirectUrl = "../register.php?message=Informe todos os campos obrigatórios!&class=error";
+    $_SESSION['message'] = "Informe todos os campos obrigatórios!";
+    $_SESSION['class'] = "error";
+    $redirectUrl = "../register.php";
 }
 
 header('Location: ' . $redirectUrl);
+exit();

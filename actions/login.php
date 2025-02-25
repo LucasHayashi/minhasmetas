@@ -23,13 +23,20 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             $authUser->setUserSession($id_usuario, $name);
             $redirectUrl = "../dashboard.php";
         } else {
-            $redirectUrl = "../login.php?message=Senha incorreta!&class=error";
+            $_SESSION['message'] = "Senha incorreta!";
+            $_SESSION['class'] = "error";
+            $redirectUrl = "../login.php";
         }
     } else {
-        $redirectUrl = "../login.php?message=Usuário não encontrado!&class=error";
+        $_SESSION['message'] = "Usuário não encontrado!";
+        $_SESSION['class'] = "error";
+        $redirectUrl = "../login.php";
     }
 } else {
-    $redirectUrl = "../login.php?message=Informe todos os campos obrigatórios!&class=error";
+    $_SESSION['message'] = "Informe todos os campos obrigatórios!";
+    $_SESSION['class'] = "error";
+    $redirectUrl = "../login.php";
 }
 
 header('Location: ' . $redirectUrl);
+exit();

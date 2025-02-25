@@ -1,7 +1,6 @@
 <?php
 $title = "Registrar-se";
 include_once("templates/header.php");
-include_once("funcoes.php");
 ?>
 
 <main class="m-auto">
@@ -26,7 +25,4 @@ include_once("funcoes.php");
 
 <?php
 include_once("templates/footer.php");
-
-printQueryParamAlert();
-
 ?>

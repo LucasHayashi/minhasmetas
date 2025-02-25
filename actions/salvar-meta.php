@@ -23,9 +23,12 @@ $sql = "INSERT INTO metas (id_usuario, titulo, valor_total, valor_inicial, data_
 $insert = $con->prepare($sql);
 
 if ($insert->execute($data)) {
-    $url = "../dashboard.php?message=Meta salva com sucesso&class=success";
+    $_SESSION['message'] = "Meta salva com sucesso!";
+    $_SESSION['class'] = "success";
 } else {
-    $url = "../dashboard.php?message=Ops! Ocorreu um erro ao salvar sua meta&class=danger";
+    $_SESSION['message'] = "Ops! Ocorreu um erro ao salvar sua meta";
+    $_SESSION['class'] = "danger";
 }
 
-header('Location: ' . $url);
+header('Location: ../dashboard.php'); // Redireciona para dashboard.php
+exit();

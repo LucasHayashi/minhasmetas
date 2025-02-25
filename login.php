@@ -9,7 +9,6 @@ if ($authInfo->isLogged()) {
 
 $title = "Entrar";
 include_once("templates/header.php");
-include_once("funcoes.php");
 
 ?>
 <main class="m-auto">
@@ -30,7 +29,4 @@ include_once("funcoes.php");
 </main>
 <?php
 include_once("templates/footer.php");
-
-printQueryParamAlert();
-
 ?>

@@ -39,6 +39,6 @@ include_once("templates/header.php");
 </main>
 
 <?php
-$extraScripts = ["js/metas-script.js"];
+$extraScripts = ["js/metas.js"];
 include_once("templates/footer.php");
 ?>

@@ -65,6 +65,6 @@ $data_limite = date("d/m/Y", strtotime($meta['data_limite']));
 </main>
 
 <?php
-$extraScripts = ["js/metas-script.js"];
+$extraScripts = ["js/metas.js"];
 include_once("templates/footer.php");
 ?>
