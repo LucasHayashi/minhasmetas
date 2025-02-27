@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once("../includes/conexao.php");
 require_once("../class/Auth.class.php");
 
@@ -24,17 +25,17 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             $redirectUrl = "../dashboard.php";
         } else {
             $_SESSION['message'] = "Senha incorreta!";
-            $_SESSION['class'] = "error";
+            $_SESSION['class'] = "danger";
             $redirectUrl = "../login.php";
         }
     } else {
         $_SESSION['message'] = "Usuário não encontrado!";
-        $_SESSION['class'] = "error";
+        $_SESSION['class'] = "danger";
         $redirectUrl = "../login.php";
     }
 } else {
     $_SESSION['message'] = "Informe todos os campos obrigatórios!";
-    $_SESSION['class'] = "error";
+    $_SESSION['class'] = "danger";
     $redirectUrl = "../login.php";
 }
 

@@ -16,11 +16,8 @@ include_once("templates/header.php");
 
         <hr>
 
-        <div id="metas-container" class="row">
-            <!-- Cards serão inseridos aqui dinamicamente -->
-        </div>
+        <div id="metas-container" class="row row-gap-3"></div>
 
-        <!-- Modal Excluir Meta -->
         <div class="modal fade" id="modalExcluirMeta">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -42,5 +39,6 @@ include_once("templates/header.php");
 </main>
 
 <?php
+$extraScripts = ["js/dashboard.js"];
 include_once("templates/footer.php");
 ?>

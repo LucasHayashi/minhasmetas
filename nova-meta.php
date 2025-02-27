@@ -17,14 +17,14 @@ include_once("templates/header.php");
                 <label for="valor_total" class="form-label">Total da Meta</label>
                 <div class="input-group">
                     <span class="input-group-text">R$</span>
-                    <input type="text" class="form-control brl" id="valor_total" name="valor_total" aria-label="Valor total da meta" required>
+                    <input type="text" class="form-control brl" id="valor_total" name="valor_total" value="0" aria-label="Valor total da meta" required>
                 </div>
             </div>
             <div class="col-md-6">
                 <label for="valor_atual" class="form-label">Valor atual</label>
                 <div class="input-group">
                     <span class="input-group-text">R$</span>
-                    <input type="text" class="form-control brl" id="valor_atual" name="valor_atual" aria-label="Valor atual da meta" required>
+                    <input type="text" class="form-control brl" id="valor_atual" name="valor_atual" value="0" aria-label="Valor atual da meta" required>
                 </div>
             </div>
             <div class="col-md-6">

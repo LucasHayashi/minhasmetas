@@ -26,7 +26,7 @@ if ($acao == 'carregar-metas') {
 	} else {
 		$dados = array(
 			'message' => "Nenhuma meta foi excluída",
-			'class' => 'error',
+			'class' => 'danger',
 			'status' => 400
 		);
 	}

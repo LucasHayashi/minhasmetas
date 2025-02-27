@@ -11,6 +11,11 @@ $authInfo = new Auth();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Montserrat:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css" integrity="sha512-34s5cpvaNG3BknEWSuOncX28vz97bRI59UnVtEEpFX536A7BtZSJHsDyFoCl8S7Dt2TPzcrCEoHBGeM4SUBDBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -20,7 +25,10 @@ $authInfo = new Auth();
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container">
-                <a class="navbar-brand" href="index.php">MinhasMetas</a>
+                <a class="navbar-brand" href="index.php">
+                    <img src="logo.png" alt="Minhas Metas" height="32">
+                    MinhasMetas
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -34,26 +42,19 @@ $authInfo = new Auth();
                     </ul>
                     <!-- Escola do tema -->
                     <div class="d-flex">
-                        <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle current-theme" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"></a>
-                                <ul class="dropdown-menu themes-list">
-                                    <li>
-                                        <a class="dropdown-item" href="#" data-theme="light">
-                                            <i class="bi bi-brightness-high"></i> Claro
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#" data-theme="dark">
-                                            <i class="bi bi-moon-stars-fill"></i> Escuro
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#" data-theme="auto">
-                                            <i class="bi bi-circle-half"></i> Auto
-                                        </a>
-                                    </li>
-                                </ul>
+                        <ul class="navbar-nav align-items-sm-center">
+                            <li class="nav-item">
+                                <div class="mode-switch">
+                                    <button title="Use dark mode" id="dark" class="btn btn-sm btn-default text-secondary">
+                                        <i class="bi bi-moon"></i>
+                                    </button>
+                                    <button title="Use light mode" id="light" class="btn btn-sm btn-default text-secondary">
+                                        <i class="bi bi-sun"></i>
+                                    </button>
+                                    <button title="Use system preferred mode" id="system" class="btn btn-sm btn-default text-secondary">
+                                        <i class="bi bi-display"></i>
+                                    </button>
+                                </div>
                             </li>
                             <li class="nav-item">
                                 <?php if ($authInfo->isLogged()) : ?>

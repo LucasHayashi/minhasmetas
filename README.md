@@ -28,8 +28,6 @@ Embora seja um **projeto legado**, ele continua sendo mantido e recentemente rec
 
 - [jQuery](https://jquery.com/) - Biblioteca principal para manipulação do DOM.
 - [jQuery Mask Plugin](https://igorescobar.github.io/jQuery-Mask-Plugin/) - Para máscaras de entrada de dados.
-- [jQuery-maskMoney](https://plentz.github.io/jquery-maskmoney/) - Para formatação de valores monetários.
-- [Notify.js](https://notifyjs.jpillora.com/) - Para exibir notificações visuais ao usuário.
 - [Bootstrap Datepicker](https://bootstrap-datepicker.readthedocs.io/en/latest/) - Para seleção de datas.
 - [moment.js](https://momentjs.com/) - Para formatação das datas
 

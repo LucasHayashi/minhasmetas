@@ -1,33 +1,47 @@
-const THEME_LIST = {
-  light: { icon: "brightness-high", title: "Claro" },
-  dark: { icon: "moon-stars-fill", title: "Escuro" },
-  auto: { icon: "circle-half", title: "Auto" },
+function setTheme(mode = "auto") {
+  const userMode = localStorage.getItem("bs-theme");
+  const sysMode = window.matchMedia("(prefers-color-scheme: light)").matches;
+  const useSystem = mode === "system" || (!userMode && mode === "auto");
+  const modeChosen = useSystem
+    ? "system"
+    : mode === "dark" || mode === "light"
+    ? mode
+    : userMode;
+
+  if (useSystem) {
+    localStorage.removeItem("bs-theme");
+  } else {
+    localStorage.setItem("bs-theme", modeChosen);
+  }
+
+  document.documentElement.setAttribute(
+    "data-bs-theme",
+    useSystem ? (sysMode ? "light" : "dark") : modeChosen
+  );
+  document
+    .querySelectorAll(".mode-switch .btn")
+    .forEach((e) => e.classList.remove("text-body"));
+  document.getElementById(modeChosen).classList.add("text-body");
+}
+
+setTheme();
+
+document
+  .querySelectorAll(".mode-switch .btn")
+  .forEach((e) => e.addEventListener("click", () => setTheme(e.id)));
+window
+  .matchMedia("(prefers-color-scheme: light)")
+  .addEventListener("change", () => setTheme());
+
+const brlCurrencyMask = (e) => {
+  let value = e.target.value;
+  value = value.replace(/\D/g, "");
+  const formatted = new Intl.NumberFormat("pt-BR", {
+    minimumFractionDigits: 2,
+  }).format(parseFloat(value) / 100);
+
+  e.target.value = value ? formatted : "";
 };
-
-const getActiveTheme = () => localStorage.getItem("theme") || "dark";
-
-const setActiveTheme = (theme) => {
-  $("html").attr("data-bs-theme", theme);
-  localStorage.setItem("theme", theme);
-  updateThemeDisplay();
-};
-
-const updateThemeDisplay = () => {
-  const { icon, title } = THEME_LIST[getActiveTheme()];
-  $(".current-theme").html(`<i class="bi bi-${icon}"></i> ${title}`);
-  $(".themes-list li a")
-    .removeClass("active")
-    .filter(`[data-theme="${getActiveTheme()}"]`)
-    .addClass("active");
-};
-
-(() => {
-  setActiveTheme(getActiveTheme());
-})();
-
-$(document).on("click", ".themes-list li a", function () {
-  setActiveTheme($(this).data("theme"));
-});
 
 const formatarMoeda = (valor) =>
   new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(
@@ -42,9 +56,6 @@ const calcularDiasRestantes = (dataLimite) =>
 
 const formatarData = (data) => moment(data).format("DD/MM/YYYY");
 
-const notify = (message, className) =>
-  $.notify(message, { position: "top right", className });
-
 const carregarMetas = () => {
   $.post(
     "ajax.php",
@@ -55,7 +66,7 @@ const carregarMetas = () => {
 
       if (!metas.length) {
         return $container.html(
-          '<p class="text-center">Nenhuma meta encontrada.</p>'
+          '<p class="alert alert-primary" role="alert">Nenhuma meta encontrada.</p>'
         );
       }
 
@@ -69,11 +80,11 @@ const carregarMetas = () => {
           );
           const diasRestantes = calcularDiasRestantes(data_limite);
           const statusDias =
-            diasRestantes > 0 ? `${diasRestantes} dias` : "Meta vencida";
+            diasRestantes > 0 ? `${diasRestantes} dias` : "Meta expirada";
 
           $container.append(`
         <div class="col-md-6 col-lg-4">
-          <div class="card card-meta" id="meta-${id_meta}">
+          <div class="card card-meta bg-body-tertiary" id="meta-${id_meta}">
             <div class="card-body">
               <h5 class="card-title">${titulo}</h5>
               <p><strong>Valor Total:</strong> ${formatarMoeda(valorTotal)}</p>
@@ -112,6 +123,23 @@ const carregarMetas = () => {
   });
 };
 
+const dateIsValid = (date) => {
+  return date instanceof Date && !isNaN(date);
+};
+
+const getCurrencyRawValue = (value) => {
+  return Number(value.replace(/\./g, "").replace(",", "."));
+};
+
+function showToast(message, type = "primary") {
+  var toastElement = $("#liveToast");
+
+  $("#toastMessage").text(message);
+  toastElement.attr("class", "toast text-bg-" + type);
+
+  bootstrap.Toast.getOrCreateInstance(toastElement[0]).show();
+}
+
 $(document).on("show.bs.modal", "#modalExcluirMeta", function (event) {
   $("#btn-confirmar-exclusao").data(
     "idmeta",
@@ -127,37 +155,18 @@ $(document).on("click", "#btn-confirmar-exclusao", function () {
     { acao: "excluir-meta", idMeta },
     (data) => {
       if (data) {
-        $(`#meta-${idMeta}`).remove();
+        carregarMetas();
         if (!$("#metas-container").children().length) {
           $("#metas-container").html(
-            '<p class="text-center">Nenhuma meta encontrada.</p>'
+            '<p class="alert alert-primary" role="alert">Nenhuma meta encontrada.</p>'
           );
         }
       }
       $("#modalExcluirMeta").modal("hide");
-      notify(data.message, data.class);
+      showToast(data.message, data.class);
     },
     "json"
   ).fail(() => {
-    notify("Erro ao excluir meta. Tente novamente.", "error");
+    showToast("Erro ao excluir meta. Tente novamente.", "danger");
   });
-});
-
-$(document).ready(() => {
-  carregarMetas();
-  $(".date").mask("00/00/0000", { selectOnFocus: true });
-  $(".datepicker").datepicker({
-    language: "pt-BR",
-    todayHighlight: true,
-    startDate: "+0d",
-  });
-  $(".brl")
-    .maskMoney({
-      allowNegative: false,
-      thousands: ".",
-      decimal: ",",
-      affixesStay: false,
-      reverse: true,
-    })
-    .maskMoney("mask");
 });

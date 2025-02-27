@@ -5,7 +5,7 @@ $authInfo = new Auth();
 
 if (!$authInfo->isLogged()) {
     $_SESSION['message'] = "Sem permissão para acessar esta página!";
-    $_SESSION['class'] = "error";
+    $_SESSION['class'] = "danger";
     header('Location: login.php');
     exit();
 }

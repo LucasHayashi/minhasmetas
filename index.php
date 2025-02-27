@@ -1,32 +1,33 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minhas Metas - Início </title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-    <main>
-        <div class="main-container">
-            <div class="main-content">
-                <div class="title">
-                    <h1>Minhas Metas</h1>
+<?php
+$title = "Minhas Metas - Registre e acompanhe suas metas pessoais";
+include_once("templates/header.php");
+?>
+<main class="d-flex flex-column align-items-center justify-content-center vh-100">
+    <div class="container">
+        <div class="row justify-content-center m-2">
+            <div class="col-12 col-md-8 col-lg-6 text-center p-4 shadow-sm border-0 bg-body-tertiary">
+                <div class="image">
+                    <img src="invest.svg" alt="Ilustração de completar metas" class="img-fluid" style="max-width: 250px;">
                 </div>
-                <div class="subtitle">
-                    <h2>Defina e acompanhe suas metas</h2>
+
+                <div class="title mt-4">
+                    <h1 class="fw-bold">Minhas Metas</h1>
                 </div>
-                <div class="action">
-                    <a href="login.php" class="btn">Acessar</a>
+
+                <div class="subtitle mt-2">
+                    <h2 class="fs-4 text-muted">Defina e acompanhe suas metas pessoais</h2>
+                </div>
+
+                <div class="action mt-4">
+                    <a href="login.php" class="btn btn-primary btn-lg">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Acessar
+                    </a>
                 </div>
             </div>
         </div>
-    </main>
-</body>
+    </div>
+</main>
 
-</html>
+<?php
+include_once("templates/footer.php");
+?>

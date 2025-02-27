@@ -1,7 +1,6 @@
 <?php
-include_once("../includes/conexao.php");
-
 session_start();
+include_once("../includes/conexao.php");
 
 if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])) {
     $name = $_POST['name'];
@@ -30,17 +29,17 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
             $redirectUrl = "../login.php";
         } else {
             $_SESSION['message'] = "Ops! Ocorreu um erro ao criar seu usuário, tente novamente!";
-            $_SESSION['class'] = "error";
+            $_SESSION['class'] = "danger";
             $redirectUrl = "../register.php";
         }
     } else {
         $_SESSION['message'] = "Usuário já existente!";
-        $_SESSION['class'] = "error";
+        $_SESSION['class'] = "danger";
         $redirectUrl = "../register.php";
     }
 } else {
     $_SESSION['message'] = "Informe todos os campos obrigatórios!";
-    $_SESSION['class'] = "error";
+    $_SESSION['class'] = "danger";
     $redirectUrl = "../register.php";
 }
 

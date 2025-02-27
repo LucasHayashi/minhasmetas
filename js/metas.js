@@ -1,26 +1,32 @@
-function dateIsValid(date) {
-  return date instanceof Date && !isNaN(date);
-}
-
 $(document).ready(function () {
+  $(".date").mask("00/00/0000", { selectOnFocus: true });
+  $(".datepicker").datepicker({
+    language: "pt-BR",
+    todayHighlight: true,
+    startDate: "+0d",
+  });
+
+  $(".brl").on("input", brlCurrencyMask);
+  $(".brl").trigger("input");
   $("#criar-nova-meta, #atualiizar-meta").on("submit", function (event) {
-    let notifyMessage = "";
-    let valor_total = $("#valor_total").maskMoney("unmasked").get(0);
-    let valor_atual = $("#valor_atual").maskMoney("unmasked").get(0);
+    let toastMessage = "";
+    let valor_total = getCurrencyRawValue($("#valor_total").val());
+    let valor_atual = getCurrencyRawValue($("#valor_atual").val());
     let data_limite = $("#data_limite").datepicker("getDate");
 
-    if (valor_atual > valor_total) {
-      notifyMessage =
-        "O valor atual não pode ser maior que o valor da sua meta";
+    if (valor_total <= 0) {
+      toastMessage = "O valor da meta precisa ser maior que zero";
+    } else if (valor_atual > valor_total) {
+      toastMessage = "O valor atual não pode ser maior que o valor da sua meta";
     } else if (!dateIsValid(data_limite)) {
-      notifyMessage = "Insira uma data válida";
+      toastMessage = "Insira uma data válida";
     } else {
       $("#valor_total").val(valor_total);
       $("#valor_atual").val(valor_atual);
       return;
     }
 
-    notify(notifyMessage, "error");
+    showToast(toastMessage, "danger");
 
     event.preventDefault();
   });
