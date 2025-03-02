@@ -6,3 +6,12 @@ h1,
 h2 {
   font-family: "Montserrat", sans-serif;
 }
+
+:root {
+  --bs-body-bg-transition: background-color 0.3s ease;
+  --bs-body-color-transition: color 0.3s ease;
+}
+
+body {
+  transition: var(--bs-body-bg-transition), var(--bs-body-color-transition);
+}

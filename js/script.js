@@ -24,8 +24,6 @@ function setTheme(mode = "auto") {
   document.getElementById(modeChosen).classList.add("text-body");
 }
 
-setTheme();
-
 document
   .querySelectorAll(".mode-switch .btn")
   .forEach((e) => e.addEventListener("click", () => setTheme(e.id)));
